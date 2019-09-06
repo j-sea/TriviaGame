@@ -7,20 +7,61 @@
     <title>Trivia Game</title>
 </head>
 <body>
-    <!-- Display: Game Name -->
-    <!-- Display: Game Instructions -->
-    <!-- Display Screen: Game -->
-    <!-- Display: Time Left -->
-    <!-- Display: Question -->
-    <!-- Display: Answers -->
-    <!-- Display Screen: Correct Answer Chosen -->
-    <!-- Display: Correct Answer -->
-    <!-- Display Screen: Wrong Answer Chosen -->
-    <!-- Display: Correct Answer -->
-    <!-- Display Screen: Time Ran Out -->
-    <!-- Display Screen: Trivia Summary -->
-    <!-- Display: Number of Correct Answers -->
-    <!-- Display: Number of Incorrect Answers -->
-    <!-- Display: Restart Game Button -->
+    <header>
+        <!-- Display: Game Name -->
+        <h1>Trivia Game</h1>
+        <!-- Display: Game Instructions -->
+        <p>Attempt to select the correct answer by clicking on it. You must answer before time runs out, or it will be considered an incorrect choice.</p>
+    </header>
+    <main>
+        <!-- Display Screen: Game -->
+        <section id="game-screen">
+            <!-- Display: Time Left -->
+            <p id="time-left"><b>Time Left:</b> <span>(none)</span></p>
+            <!-- Display: Question -->
+            <p id="question"><b>Question:</b> <span>(none)</span></p>
+            <!-- Display: Answers -->
+            <ul id="answers" role="menu" aria-roledescription="menu for selecting answers to the question">
+                <li><button class="answer" role="menuitem">Answer 1</button></li>
+                <li><button class="answer" role="menuitem">Answer 2</button></li>
+                <li><button class="answer" role="menuitem">Answer 3</button></li>
+                <li><button class="answer" role="menuitem">Answer 4</button></li>
+            </ul>
+        </section>
+
+        <!-- Display Screen: Correct Answer Chosen -->
+        <section id="correct-answer-screen">
+            <h2>Correct!</h2>
+            <!-- Display: Correct Answer -->
+            <p class="correct-answer"><b>Correct Answer:</b> <span>(none)</span></p>
+        </section>
+        
+        <!-- Display Screen: Wrong Answer Chosen -->
+        <section id="wrong-answer-screen">
+            <h2>Incorrect!</h2>
+            <!-- Display: Incorrect Answer -->
+            <p class="incorrect-answer"><b>You Chose:</b> <span>(none)</span></p>
+            <!-- Display: Correct Answer -->
+            <p class="correct-answer"><b>Correct Answer:</b> <span>(none)</span></p>
+        </section>
+        
+        <!-- Display Screen: Time Ran Out -->
+        <section id="time-ran-out-screen">
+            <h2>Time Ran Out!</h2>
+            <!-- Display: Correct Answer -->
+            <p class="correct-answer"><b>Correct Answer:</b> <span>(none)</span></p>
+        </section>
+        
+        <!-- Display Screen: Trivia Summary -->
+        <section id="trivia-summary-screen">
+            <h2>Game Complete!</h2>
+            <!-- Display: Number of Correct Answers -->
+            <p id="number-of-correct-answers"><b>Correct:</b> <span>0</span></p>
+            <!-- Display: Number of Incorrect Answers -->
+            <p id="number-of-incorrect-answers"><b>Incorrect:</b> <span>0</span></p>
+            <!-- Display: Restart Game Button -->
+            <button id="restart-game-button">Play Again!</button>
+        </section>
+    </main>
 </body>
 </html>
