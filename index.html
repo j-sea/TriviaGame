@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
@@ -52,16 +53,32 @@
             <p class="correct-answer"><b>Correct Answer:</b> <span>(none)</span></p>
         </section>
         
-        <!-- Display Screen: Trivia Summary -->
-        <section id="trivia-summary-screen">
-            <h2>Game Complete!</h2>
+        <!-- Display Screen: Win Summary -->
+        <section id="win-summary-screen">
+            <h2>You Win!</h2>
             <!-- Display: Number of Correct Answers -->
-            <p id="number-of-correct-answers"><b>Correct:</b> <span>0</span></p>
+            <p class="number-of-correct-answers"><b>Correct:</b> <span>0</span></p>
             <!-- Display: Number of Incorrect Answers -->
-            <p id="number-of-incorrect-answers"><b>Incorrect:</b> <span>0</span></p>
+            <p class="number-of-incorrect-answers"><b>Incorrect:</b> <span>0</span></p>
             <!-- Display: Restart Game Button -->
-            <button id="restart-game-button">Play Again!</button>
+            <button class="restart-game-button">Play Again!</button>
+        </section>
+
+        <!-- Display Screen: Lose Summary -->
+        <section id="lose-summary-screen">
+            <h2>You Lost!</h2>
+            <!-- Display: Number of Correct Answers -->
+            <p class="number-of-correct-answers"><b>Correct:</b> <span>0</span></p>
+            <!-- Display: Number of Incorrect Answers -->
+            <p class="number-of-incorrect-answers"><b>Incorrect:</b> <span>0</span></p>
+            <!-- Display: Restart Game Button -->
+            <button class="restart-game-button">Play Again!</button>
         </section>
     </main>
+    <footer>
+        Copyright &copy;
+    </footer>
+
+    <script src="./assets/scripts/game.js"></script>
 </body>
 </html>
