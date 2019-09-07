@@ -138,7 +138,7 @@ let game = {
 
         // Reset all of the game state variables to their initial values
         game.currentQuestions = [];
-        game.currentQuestionsArrayIndex = 0;
+        game.currentQuestionsArrayIndex = -1;
         game.timerIntervalID = undefined;
         game.popupTimeoutID = undefined;
         game.numberOfCorrectGuesses = 0;
@@ -157,7 +157,7 @@ let game = {
                 game.currentQuestions.push(newQuestionIndex);
             }
         }
-
+        
         console.log('questions loaded');
         console.log(game.currentQuestions);
     },
@@ -165,6 +165,9 @@ let game = {
     // Load a new question to ask along with its answers
     loadNewQuestion: function(){
         console.log('loading new question');
+
+        // Increment the array index we'll use for the new question
+        game.currentQuestionsArrayIndex++;
 
         // Reset the question time and update the display
         game.questionTimer = SECONDS_PER_QUESTION;
@@ -180,21 +183,24 @@ let game = {
         // Empty the answers menu if any menu items exist
         MENU['answers'].empty();
         
-        // Add all of the answers (including the correct one) randomly into the answers menu
+        // Add all of the answers (including the correct one) into the answers menu
         let currentAnswerText = currentQuestionObject.a;
         let currentAnswerElement = $(`<li><button class="answer" role="menuitem" data-isAnswer="true">${currentAnswerText}</button></li>`);
         MENU['answers'].append(currentAnswerElement);
         for (let i = 0; i < currentQuestionObject.ia.length; i++) {
             const currentIncorrectAnswer = currentQuestionObject.ia[i];
 
+            let randomIndex = Math.floor(Math.random() * (i + 1));
+            let insertionPoint = MENU['answers'].find(`li:nth-child(${randomIndex+1})`);
+            console.log(insertionPoint);
             // Randomize whether we prepend or append our incorrect answer
             if (Math.floor(Math.random() * 2) === 0) {
                 
-                MENU['answers'].prepend(`<li><button class="answer" role="menuitem" data-isAnswer="false">${currentIncorrectAnswer}</button></li>`);
+                insertionPoint.before(`<li><button class="answer" role="menuitem" data-isAnswer="false">${currentIncorrectAnswer}</button></li>`);
             }
             else {
 
-                MENU['answers'].append(`<li><button class="answer" role="menuitem" data-isAnswer="false">${currentIncorrectAnswer}</button></li>`);
+                insertionPoint.after(`<li><button class="answer" role="menuitem" data-isAnswer="false">${currentIncorrectAnswer}</button></li>`);
             }
         }
 
@@ -212,9 +218,6 @@ let game = {
         
         // Start a timer to initiate the countdown
         game.timerIntervalID = setInterval(game.handleQuestionTimer, 1000);
-        
-        // Increment the array index we'll use for the next question
-        game.currentQuestionsArrayIndex++;
     },
     
     // Handle a Correct Guess
@@ -261,8 +264,8 @@ let game = {
         // Set the correct answers texts
         TEXT['correct-answer'].text(currentQuestionObject.a);
 
-        // Switch to the time running out screen
-        game.switchState('time-running-out-screen');
+        // Switch to the time ran out screen
+        game.switchState('time-ran-out-screen');
     },
     
     // Handle the Question Timer (used in an interval)
@@ -360,7 +363,7 @@ let game = {
                     console.log('closing correct answer screen');
 
                     // Load a new question if there is another
-                    if (game.currentQuestionsArrayIndex !== game.currentQuestions.length) {
+                    if (game.currentQuestionsArrayIndex !== game.currentQuestions.length - 1) {
 
                         game.loadNewQuestion();
                         game.switchState('game-screen');
@@ -389,7 +392,7 @@ let game = {
                     console.log('closing incorrect answer screen');
 
                     // Load a new question if there is another
-                    if (game.currentQuestionsArrayIndex !== game.currentQuestions.length) {
+                    if (game.currentQuestionsArrayIndex !== game.currentQuestions.length - 1) {
 
                         game.loadNewQuestion();
                         game.switchState('game-screen');
@@ -418,7 +421,7 @@ let game = {
                     console.log('closing time ran out screen');
 
                     // Load a new question if there is another
-                    if (game.currentQuestionsArrayIndex !== game.currentQuestions.length) {
+                    if (game.currentQuestionsArrayIndex !== game.currentQuestions.length - 1) {
 
                         game.loadNewQuestion();
                         game.switchState('game-screen');
