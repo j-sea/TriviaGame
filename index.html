@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
@@ -14,6 +15,12 @@
         <p>Attempt to select the correct answer by clicking on it. You must answer before time runs out, or it will be considered an incorrect choice.</p>
     </header>
     <main>
+        <!-- Display Screen: Start -->
+        <section id="start-screen">
+            <!-- Display: Start Button -->
+            <button id="start-game-button">Bring on the Questions!</button>
+        </section>
+
         <!-- Display Screen: Game -->
         <section id="game-screen">
             <!-- Display: Time Left -->
@@ -36,8 +43,8 @@
             <p class="correct-answer"><b>Correct Answer:</b> <span>(none)</span></p>
         </section>
         
-        <!-- Display Screen: Wrong Answer Chosen -->
-        <section id="wrong-answer-screen">
+        <!-- Display Screen: Incorrect Answer Chosen -->
+        <section id="incorrect-answer-screen">
             <h2>Incorrect!</h2>
             <!-- Display: Incorrect Answer -->
             <p class="incorrect-answer"><b>You Chose:</b> <span>(none)</span></p>
@@ -54,14 +61,22 @@
         
         <!-- Display Screen: Trivia Summary -->
         <section id="trivia-summary-screen">
-            <h2>Game Complete!</h2>
+            <h2>Trivia Done!</h2>
             <!-- Display: Number of Correct Answers -->
-            <p id="number-of-correct-answers"><b>Correct:</b> <span>0</span></p>
+            <p id="number-of-correct-answers"><b>Correct Guesses:</b> <span>0</span></p>
             <!-- Display: Number of Incorrect Answers -->
-            <p id="number-of-incorrect-answers"><b>Incorrect:</b> <span>0</span></p>
+            <p id="number-of-incorrect-answers"><b>Incorrect Guesses:</b> <span>0</span></p>
+            <!-- Display: Number of Plays -->
+            <p id="number-of-plays"><b>Games Played:</b> <span>0</span></p>
             <!-- Display: Restart Game Button -->
             <button id="restart-game-button">Play Again!</button>
         </section>
     </main>
+    <footer>
+        Copyright &copy;
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/scripts/game.js"></script>
 </body>
 </html>
