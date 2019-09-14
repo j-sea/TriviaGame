@@ -1,6 +1,7 @@
+// This is the trivia summary screen (shown when all of the questions have been resolved for a game)
 let triviaSummaryScreen = {
 
-    unloadState: function(){
+    unloadState: function(nextState){
 
         // Hide the trivia summary screen section
         game.hideScreen('trivia-summary-screen');
@@ -9,35 +10,22 @@ let triviaSummaryScreen = {
         BUTTON['restart-game-button'].off('click');
     },
 
-    loadState: function(){
+    loadState: function(prevState){
         
         // Attach click event handler for the restart button
         BUTTON['restart-game-button'].on('click', function(){
             
             // Switch to the game screen
-            game.switchState('game-screen');
+            sm.switchState('game-screen');
         });
 
         // Run the game completion code
-        triviaSummaryScreen.handleGameCompletion();
+        game.handleGameCompletion();
 
         // Show the trivia summary screen section
         game.showScreen('trivia-summary-screen');
 
     },
-
-    // Handle game completion
-    handleGameCompletion: function(){
-        console.log('handling game completion');
-        
-        // Increment the number of plays and update the text
-        game.numberOfPlays++;
-        TEXT['number-of-plays'].text(game.numberOfPlays);
-        
-        // Update the correct and incorrect guesses texts
-        TEXT['number-of-correct-answers'].text(game.numberOfCorrectGuesses);
-        TEXT['number-of-incorrect-answers'].text(game.numberOfIncorrectGuesses);
-    },
 };
 
-game.stateObjects['trivia-summary-screen'] = triviaSummaryScreen;
+sm.addState('trivia-summary-screen', triviaSummaryScreen);

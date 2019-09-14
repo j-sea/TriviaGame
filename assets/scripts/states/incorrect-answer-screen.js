@@ -1,11 +1,13 @@
+// This is the incorrect answer screen (shown when a user guesses incorrectly)
 let incorrectAnswerScreenState = {
-    
-    unloadState: function(){
+
+    unloadState: function(nextState){
 
         // Hide the incorrect answer screen section
         game.hideScreen('incorrect-answer-screen');
     },
-    loadState: function(){
+
+    loadState: function(prevState){
 
         // Create the timeout for this screen for its automatic transition
         game.popupTimeoutID = setTimeout(function(){
@@ -14,12 +16,12 @@ let incorrectAnswerScreenState = {
             // Load a new question if there is another
             if (game.currentQuestionsArrayIndex !== game.currentQuestions.length - 1) {
 
-                game.switchState('game-screen');
+                sm.switchState('game-screen');
             }
             // If there are no more questions, switch to the summary screen
             else {
 
-                game.switchState('trivia-summary-screen');
+                sm.switchState('trivia-summary-screen');
             }
         }, SECONDS_PER_POPUP * 1000);
 
@@ -28,4 +30,4 @@ let incorrectAnswerScreenState = {
     }
 };
 
-game.stateObjects['incorrect-answer-screen'] = incorrectAnswerScreenState;
+sm.addState('incorrect-answer-screen', incorrectAnswerScreenState);

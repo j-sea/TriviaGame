@@ -1,7 +1,7 @@
 // This is the starting screen (shown when page loads)
 let startScreenState = {
 
-    unloadState: function(){
+    unloadState: function(nextState){
 
         // Hide the start screen section
         game.hideScreen('start-screen');
@@ -10,18 +10,18 @@ let startScreenState = {
         BUTTON['start-game-button'].off('click');
     },
 
-    loadState: function(){
+    loadState: function(prevState){
 
         // Attach click event handler for the start button
         BUTTON['start-game-button'].on('click', function(){
 
             // Switch to the game screen
-            game.switchState('game-screen');
+            sm.switchState('game-screen');
         });
 
         // Show the start screen section
         game.showScreen('start-screen');
     },
-}
+};
 
-game.stateObjects['start-screen'] = startScreenState;
+sm.addState('start-screen', startScreenState);
